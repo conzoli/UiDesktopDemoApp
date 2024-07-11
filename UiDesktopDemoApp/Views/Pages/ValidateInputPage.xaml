@@ -1,0 +1,64 @@
+﻿<Page x:Class="UiDesktopDemoApp.Views.Pages.ValidateInputPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:UiDesktopDemoApp.Views.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="clr-namespace:UiDesktopDemoApp.Models"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:vm="clr-namespace:UiDesktopDemoApp.ViewModels.Pages"
+      
+      xmlns:resx="clr-namespace:UiDesktopDemoApp.Resources"
+ 
+      Title="ValidateInputPage"
+ 
+      d:DesignHeight="900"
+      d:DesignWidth="800"
+ 
+      d:DataContext="{d:DesignInstance local:ValidateInputPage,
+                                    IsDesignTimeCreatable=False}"
+ 
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      ScrollViewer.CanContentScroll="False"
+      mc:Ignorable="d"
+      >
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical" >
+
+            <StackPanel Orientation="Vertical">
+                <ui:TextBlock FontTypography="Subtitle" Text="Vorname:" MinWidth="150" VerticalAlignment="Center" ></ui:TextBlock>
+                <ui:TextBox Text="{Binding ViewModel.FirstName,  UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Vorname"  MinWidth="500" Margin="0,10,0,0"></ui:TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <ui:TextBlock FontTypography="Subtitle" Text="Name:" MinWidth="150" VerticalAlignment="Center" ></ui:TextBlock>
+                <ui:TextBox PlaceholderText="Name"  MinWidth="500" Margin="0,10,0,0"></ui:TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <ui:TextBlock FontTypography="Subtitle" Text="Alter:" MinWidth="150" VerticalAlignment="Center" ></ui:TextBlock>
+                <ui:TextBox Text="{Binding ViewModel.Age, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Alter"  MinWidth="500" Margin="0,10,0,0"></ui:TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <ui:TextBlock FontTypography="Subtitle" Text="E-Mail:" MinWidth="150" VerticalAlignment="Center" ></ui:TextBlock>
+                <ui:TextBox PlaceholderText="E-Mail"
+                            Text="{Binding ViewModel.Email, UpdateSourceTrigger=PropertyChanged}"
+                            MinWidth="500" 
+                            Margin="0,10,0,0"></ui:TextBox>
+            </StackPanel>
+
+            <ui:Button Appearance="Primary" 
+                       Content="Send" 
+                       Command="{Binding ViewModel.SendButtonCommand}"
+                       Margin="0,80,0,0" 
+                       HorizontalAlignment="Center"></ui:Button>
+
+        </StackPanel>
+        
+    </Grid>
+</Page>
