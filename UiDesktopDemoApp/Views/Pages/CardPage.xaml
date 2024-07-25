@@ -1,0 +1,206 @@
+﻿<Page x:Class="UiDesktopDemoApp.Views.Pages.CardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UiDesktopDemoApp.Views.Pages"
+      xmlns:vm="clr-namespace:UiDesktopDemoApp.ViewModels.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      
+      xmlns:resx="clr-namespace:UiDesktopDemoApp.Resources"
+      
+     d:DesignHeight="1200"
+     d:DesignWidth="800"
+      
+     Title="CardPage" 
+      
+     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+     ScrollViewer.CanContentScroll="True"
+     mc:Ignorable="d"
+      
+      d:DataContext="{d:DesignInstance local:CardPage,
+                           IsDesignTimeCreatable=False}"
+      
+      >
+
+    <Grid>
+
+        <StackPanel>
+
+            <ui:TextBlock
+             Margin="0,24,0,8"
+             FontTypography="BodyStrong"
+             Text="Examples:" />
+
+            <!-- Card with Action via Command -->
+            <ui:CardAction Command="{Binding ViewModel.ClickButtonCommand}" Icon="{ui:SymbolIcon Color24}">
+                <TextBlock>Navigate Home</TextBlock>
+            </ui:CardAction>
+
+
+            <!-- Card with Link to external URL -->
+            <ui:Anchor
+                    Margin="0,10,0,0"
+                    Padding="16"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Icon="{ui:SymbolIcon Color24}"
+                    CornerRadius="0"
+                    NavigateUri="https://wpfui.lepo.co/">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Check out the docs" />
+                    <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
+                </Grid>
+            </ui:Anchor>
+
+            <!-- Card with ComboBox -->
+            <ui:CardControl Margin="0,10,0,0" Icon="{ui:SymbolIcon Color24}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
+                        Grid.Row="0"
+                        FontTypography="Body"
+                        Text="Card with ComboBox" />
+                        <ui:TextBlock
+                            Grid.Row="1"
+                            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                            Text="Select which app theme to display" />
+                    </Grid>
+                </ui:CardControl.Header>
+                <ComboBox
+                    Grid.Column="1"
+                    MinWidth="200"
+                    ItemsSource="{Binding ViewModel.Options}"
+                    SelectedItem="{Binding ViewModel.SelectedOption}">
+                </ComboBox>
+            </ui:CardControl>
+
+            
+            <!-- Card with Toggle Switch-->
+            <ui:CardControl Margin="0,10,0,0" Icon="{ui:SymbolIcon Color24}">
+                <ui:CardControl.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ui:TextBlock
+                             Grid.Row="0"
+                             FontTypography="Body"
+                             Text="Card with ComboBox" />
+                          
+                    </Grid>
+                </ui:CardControl.Header>
+                
+                <ui:ToggleSwitch OffContent="Off" OnContent="On" IsChecked="{Binding ViewModel.Toggled}"  />
+
+            </ui:CardControl>
+            
+            
+            <!--Card Expander Example-->
+            <ui:CardExpander ContentPadding="0" Icon="{ui:SymbolIcon Color24}" Margin="0,10,0,0">
+                <ui:CardExpander.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ui:TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontTypography="Body"
+                            Text="WPF UI" />
+                        <ui:TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                            Text="© 2024 lepo.co | Leszek Pomianowski &amp; WPF UI Contributors" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Margin="0,0,16,0"
+                            VerticalAlignment="Center"
+                            Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                            Text="0.1" />
+                    </Grid>
+                </ui:CardExpander.Header>
+                <StackPanel>
+                    <Grid Margin="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="To clone this repository" />
+                        <TextBlock
+                        Grid.Column="1"
+                        Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                        Text="git clone https://github.com/lepoco/wpfui.git" />
+                    </Grid>
+                    <ui:Anchor
+                        Margin="0"
+                        Padding="16"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        Background="Transparent"
+                        BorderThickness="0,1,0,0"
+                        CornerRadius="0"
+                        NavigateUri="https://github.com/lepoco/wpfui/issues/new/choose">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="File a bug or request a new sample" />
+                            <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
+                        </Grid>
+                    </ui:Anchor>
+                    <ui:Anchor
+                        Margin="0"
+                        Padding="16"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        Background="Transparent"
+                        BorderThickness="0,1,0,1"
+                        CornerRadius="0"
+                        NavigateUri="https://wpfui.lepo.co/">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Check out the docs" />
+                            <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
+                        </Grid>
+                    </ui:Anchor>
+                    <TextBlock Margin="16" Text="Blabla" />
+                </StackPanel>
+            </ui:CardExpander>
+
+
+
+            <ui:Button Appearance="Primary"
+               Content="Nav Test"
+               Command="{Binding ViewModel.ClickButtonCommand}" Margin="10,50,0,0">
+            </ui:Button>
+
+        </StackPanel>
+
+        
+        
+    </Grid>
+</Page>

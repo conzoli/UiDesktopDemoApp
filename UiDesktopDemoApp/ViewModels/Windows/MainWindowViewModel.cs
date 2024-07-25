@@ -34,6 +34,12 @@ namespace UiDesktopDemoApp.ViewModels.Windows
                 Content = "Validate Input",
                 Icon = new SymbolIcon {Symbol = SymbolRegular.ClipboardCheckmark24 },
                 TargetPageType = typeof(Views.Pages.ValidateInputPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Card Examples",
+                Icon = new SymbolIcon {Symbol = SymbolRegular.ContactCard24},
+                TargetPageType= typeof(Views.Pages.CardPage)
             }
         };
 
